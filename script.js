@@ -5,12 +5,12 @@ const WHATSAPP_NUMBER = "5493513520444";
 
 const DEFAULT_PRODUCTS = [
     {
-        modelo: "iPhone 16 Pro",
-        estado: "Nuevo",
-        almacenamiento: "256 GB",
-        color: "Titanium",
-        bateria: "100%",
-        precio: "$900.000",
+        modelo: "iPhone 16 Pro Max",
+        estado: "Usado - Excelente",
+        almacenamiento: "128 GB",
+        color: "Todos",
+        bateria: "80% - 100%",
+        precio: "$850",
         imagen: "https://i.postimg.cc/9Qvqmzr7/iphone-16.jpg",
         stock: "En Stock"
     }
@@ -23,10 +23,14 @@ let searchQuery = '';
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
 
+    const waMsg = encodeURIComponent('Hola Nuvus Store, me gustaría consultar por el catálogo de celulares.');
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`;
+    
     const footerBtn = document.getElementById('footerWaBtn');
-    if (footerBtn) {
-        footerBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Nuvus Store, me gustaría consultar por el catálogo de celulares.')}`;
-    }
+    if (footerBtn) footerBtn.href = waUrl;
+
+    const floatingBtn = document.getElementById('floatingWaBtn');
+    if (floatingBtn) floatingBtn.href = waUrl;
 
     if (GOOGLE_SHEETS_CSV_URL && GOOGLE_SHEETS_CSV_URL.includes("output=csv")) {
         fetchCsvData(GOOGLE_SHEETS_CSV_URL);
@@ -157,18 +161,19 @@ function renderProducts() {
         const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
 
         card.innerHTML = `
-            <!-- SECCIÓN SUPERIOR OSCURA -->
-            <div class="relative w-full h-52 bg-[#1A1A1A] overflow-hidden flex items-center justify-center p-4">
-                <div class="absolute top-3 left-3 bg-white/95 text-brand-text px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+            <!-- SECCIÓN SUPERIOR ADAPTATIVA -->
+            <div class="relative w-full h-56 bg-[#EFECE6] dark:bg-[#1A1A1A] overflow-hidden flex items-center justify-center p-4 transition-colors">
+                <div class="absolute top-3 left-3 bg-white/95 dark:bg-black/80 text-brand-text dark:text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-sm z-10">
                     <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                     <span>${p.stock || 'En Stock'}</span>
                 </div>
 
-                <div class="absolute top-3 right-3 bg-black/80 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10">
+                <div class="absolute top-3 right-3 bg-black/80 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10 z-10">
                     ${p.estado}
                 </div>
 
-                <img src="${p.imagen}" alt="${p.modelo}" class="object-contain h-full w-full" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80'">
+                <!-- Imagen con Alto Fijo Uniforme (h-44) -->
+                <img src="${p.imagen}" alt="${p.modelo}" class="object-contain h-44 w-auto max-w-full transition-transform duration-300 hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80'">
             </div>
 
             <!-- SECCIÓN INFERIOR -->
