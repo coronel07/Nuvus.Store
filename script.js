@@ -1,4 +1,4 @@
-// Nuvus Store - Configuración, Tema y Sincronización
+// Nuvus Store - Configuración, Tema, Modal y Sincronización Inteligente
 
 const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQhxIYBzKuPzoLSEck-QgIvzSHr_UJFEzJ4X4Q0Qxu3RV88IV-IMNUeZTd-c58qVXtm6WitWeHint2V/pub?gid=0&single=true&output=csv";
 const WHATSAPP_NUMBER = "5493513520444";
@@ -18,6 +18,7 @@ const DEFAULT_PRODUCTS = [
 
 let allProducts = [...DEFAULT_PRODUCTS];
 let currentFilter = 'todos';
+let currentSeriesFilter = 'all';
 let searchQuery = '';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,7 +79,7 @@ async function fetchCsvData(url) {
         allProducts = parseCsv(csvText);
         renderProducts();
     } catch (error) {
-        console.error("Error al sincronizar con Google Drive:", error);
+        console.error("Error al sincronizar con Google Sheets:", error);
         allProducts = [...DEFAULT_PRODUCTS];
         renderProducts();
     }
@@ -109,6 +110,45 @@ function parseCsv(text) {
     });
 }
 
+// FUNCIÓN DINÁMICA DE SERIES
+function buildDynamicSeriesButtons() {
+    const container = document.getElementById('seriesContainer');
+    if (!container) return;
+
+    // Detectar números de serie existentes en allProducts
+    const detectedSeries = new Set();
+    allProducts.forEach(p => {
+        const match = p.modelo.match(/\b(11|12|13|14|15|16|17|X|XR|XS|SE)\b/i);
+        if (match) {
+            detectedSeries.add(match[0].toUpperCase());
+        }
+    });
+
+    // Ordenar de mayor a menor (Series numéricas)
+    const sortedSeries = Array.from(detectedSeries).sort((a, b) => {
+        const numA = parseInt(a);
+        const numB = parseInt(b);
+        if (!isNaN(numA) && !isNaN(numB)) return numB - numA;
+        return a.localeCompare(b);
+    });
+
+    let html = `<span class="text-[10px] font-bold uppercase tracking-wider text-brand-muted dark:text-darkbrand-muted mr-1">Series:</span>`;
+    
+    const isAllActive = currentSeriesFilter === 'all';
+    html += `
+        <button onclick="setSeriesFilter('all')" id="btn-series-all" class="series-btn text-[11px] px-3 py-1 rounded-lg ${isAllActive ? 'font-semibold bg-brand-text/10 dark:bg-darkbrand-text/10 text-brand-text dark:text-darkbrand-text' : 'font-medium text-brand-muted dark:text-darkbrand-muted hover:bg-brand-text/5 dark:hover:bg-darkbrand-text/5'} transition">Todas</button>
+    `;
+
+    sortedSeries.forEach(series => {
+        const isActive = currentSeriesFilter.toLowerCase() === series.toLowerCase();
+        html += `
+            <button onclick="setSeriesFilter('${series}')" id="btn-series-${series}" class="series-btn text-[11px] px-3 py-1 rounded-lg ${isActive ? 'font-semibold bg-brand-text/10 dark:bg-darkbrand-text/10 text-brand-text dark:text-darkbrand-text' : 'font-medium text-brand-muted dark:text-darkbrand-muted hover:bg-brand-text/5 dark:hover:bg-darkbrand-text/5'} transition">Serie ${series}</button>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
 function setFilter(filter) {
     currentFilter = filter;
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -121,11 +161,28 @@ function setFilter(filter) {
     renderProducts();
 }
 
+function setSeriesFilter(series) {
+    currentSeriesFilter = series;
+    renderProducts();
+}
+
+function getBatteryColorClass(bateria) {
+    if (!bateria) return 'text-[#0F9D58]';
+    const num = parseInt(bateria.replace(/[^0-9]/g, ''));
+    if (isNaN(num)) return 'text-[#0F9D58]';
+    if (num >= 90) return 'text-emerald-500 font-extrabold';
+    if (num >= 80) return 'text-amber-500 font-extrabold';
+    return 'text-orange-500 font-extrabold';
+}
+
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     const emptyState = document.getElementById('emptyState');
     if (!grid) return;
     
+    // Generar botones de series basados en el stock actual
+    buildDynamicSeriesButtons();
+
     grid.innerHTML = '';
 
     const filtered = allProducts.filter(p => {
@@ -138,7 +195,12 @@ function renderProducts() {
         if (currentFilter === 'nuevo') matchesFilter = p.estado.toLowerCase().includes('nuevo');
         else if (currentFilter === 'usado') matchesFilter = p.estado.toLowerCase().includes('usado');
 
-        return matchesSearch && matchesFilter;
+        let matchesSeries = true;
+        if (currentSeriesFilter !== 'all') {
+            matchesSeries = p.modelo.toLowerCase().includes(currentSeriesFilter.toLowerCase());
+        }
+
+        return matchesSearch && matchesFilter && matchesSeries;
     });
 
     const statTotal = document.getElementById('statTotal');
@@ -153,15 +215,16 @@ function renderProducts() {
         if (emptyState) emptyState.classList.add('hidden');
     }
 
-    filtered.forEach(p => {
+    filtered.forEach((p, index) => {
         const card = document.createElement('div');
-        card.className = "product-card bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border rounded-[24px] overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all";
-        
+        card.className = "product-card bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border rounded-[24px] overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all cursor-pointer";
+        card.onclick = () => openModal(index, filtered);
+
         const encodedMsg = encodeURIComponent(`¡Hola Nuvus Store! Me interesa consultar por el ${p.modelo} (${p.color} - ${p.almacenamiento}) publicado a ${p.precio}.`);
         const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+        const batteryClass = getBatteryColorClass(p.bateria);
 
         card.innerHTML = `
-            <!-- SECCIÓN SUPERIOR ADAPTATIVA -->
             <div class="relative w-full h-56 bg-[#EFECE6] dark:bg-[#1A1A1A] overflow-hidden flex items-center justify-center p-4 transition-colors">
                 <div class="absolute top-3 left-3 bg-white/95 dark:bg-black/80 text-brand-text dark:text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-sm z-10">
                     <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -172,11 +235,9 @@ function renderProducts() {
                     ${p.estado}
                 </div>
 
-                <!-- Imagen con Alto Fijo Uniforme (h-44) -->
                 <img src="${p.imagen}" alt="${p.modelo}" class="object-contain h-44 w-auto max-w-full transition-transform duration-300 hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80'">
             </div>
 
-            <!-- SECCIÓN INFERIOR -->
             <div class="p-5 flex flex-col justify-between space-y-4 bg-brand-card dark:bg-darkbrand-card transition-colors">
                 <h3 class="font-extrabold text-xl text-brand-text dark:text-darkbrand-text tracking-tight">${p.modelo}</h3>
 
@@ -191,11 +252,11 @@ function renderProducts() {
                     </div>
                     <div class="border-l border-brand-border dark:border-darkbrand-border pl-2">
                         <span class="block text-[10px] font-bold text-brand-muted dark:text-darkbrand-muted uppercase tracking-wider">Batería</span>
-                        <span class="text-sm font-extrabold text-[#0F9D58]">${p.bateria || '100%'}</span>
+                        <span class="text-sm ${batteryClass}">${p.bateria || '100%'}</span>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between pt-1">
+                <div class="flex items-center justify-between pt-1" onclick="event.stopPropagation()">
                     <div>
                         <span class="text-[9px] font-extrabold text-brand-muted dark:text-darkbrand-muted uppercase tracking-wider block">Precio Ef / Transf</span>
                         <span class="text-2xl font-black text-brand-text dark:text-darkbrand-text tracking-tight">${p.precio}</span>
@@ -214,3 +275,65 @@ function renderProducts() {
         grid.appendChild(card);
     });
 }
+
+function openModal(index, currentList) {
+    const p = currentList[index];
+    if (!p) return;
+
+    const modal = document.getElementById('productModal');
+    const modalContent = document.getElementById('modalContent');
+    
+    const encodedMsg = encodeURIComponent(`¡Hola Nuvus Store! Quisiera más información sobre el ${p.modelo} (${p.color} - ${p.almacenamiento}) de ${p.precio}.`);
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+    modalContent.innerHTML = `
+        <div class="w-full h-48 bg-[#EFECE6] dark:bg-[#1A1A1A] rounded-2xl flex items-center justify-center p-3">
+            <img src="${p.imagen}" alt="${p.modelo}" class="object-contain h-40 w-auto">
+        </div>
+
+        <div class="space-y-1">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-darkbrand-muted">${p.estado}</span>
+            <h3 class="text-2xl font-black text-brand-text dark:text-darkbrand-text">${p.modelo}</h3>
+        </div>
+
+        <div class="bg-brand-bg dark:bg-darkbrand-bg p-3.5 rounded-xl space-y-2 text-xs">
+            <div class="flex justify-between border-b border-brand-border/40 dark:border-darkbrand-border/40 pb-1.5">
+                <span class="text-brand-muted dark:text-darkbrand-muted">Almacenamiento</span>
+                <span class="font-bold">${p.almacenamiento}</span>
+            </div>
+            <div class="flex justify-between border-b border-brand-border/40 dark:border-darkbrand-border/40 pb-1.5">
+                <span class="text-brand-muted dark:text-darkbrand-muted">Color</span>
+                <span class="font-bold">${p.color}</span>
+            </div>
+            <div class="flex justify-between border-b border-brand-border/40 dark:border-darkbrand-border/40 pb-1.5">
+                <span class="text-brand-muted dark:text-darkbrand-muted">Salud de Batería</span>
+                <span class="font-bold text-emerald-500">${p.bateria}</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-brand-muted dark:text-darkbrand-muted">Garantía</span>
+                <span class="font-bold text-brand-text dark:text-darkbrand-text">Incluida (Verificada)</span>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+            <div>
+                <span class="text-[10px] font-bold text-brand-muted dark:text-darkbrand-muted uppercase block">Precio Contado</span>
+                <span class="text-2xl font-black text-brand-text dark:text-darkbrand-text">${p.precio}</span>
+            </div>
+            <a href="${waLink}" target="_blank" class="bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs font-bold flex items-center gap-2 shadow-md transition">
+                <span>Hablar por WhatsApp</span>
+            </a>
+        </div>
+    `;
+
+    modal.classList.remove('hidden');
+}
+
+function closeModal() {
+    const modal = document.getElementById('productModal');
+    if (modal) modal.classList.add('hidden');
+}
+
+document.getElementById('productModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'productModal') closeModal();
+});

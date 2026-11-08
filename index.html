@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
     <!-- Google Fonts & Tailwind CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -41,42 +43,65 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-brand-bg dark:bg-darkbrand-bg text-brand-text dark:text-darkbrand-text min-h-screen font-sans flex flex-col justify-between antialiased transition-colors duration-300">
+
+<body
+    class="bg-brand-bg dark:bg-darkbrand-bg text-brand-text dark:text-darkbrand-text min-h-screen font-sans flex flex-col justify-between antialiased transition-colors duration-300">
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-brand-bg/90 dark:bg-darkbrand-bg/90 backdrop-blur-md border-b border-brand-border/60 dark:border-darkbrand-border/60 transition-all">
+    <header
+        class="bg-brand-bg/90 dark:bg-darkbrand-bg/90 border-b border-brand-border/60 dark:border-darkbrand-border/60 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
+            <!-- Logo -->
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg rounded-xl flex items-center justify-center font-extrabold text-2xl shadow-sm tracking-tighter transition-colors">
+                <div
+                    class="w-10 h-10 bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg rounded-xl flex items-center justify-center font-extrabold text-2xl shadow-sm tracking-tighter transition-colors">
                     N
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg tracking-wider leading-none text-brand-text dark:text-darkbrand-text">NUVUS STORE</h1>
-                    <span class="text-[10px] tracking-widest text-brand-muted dark:text-darkbrand-muted uppercase font-semibold">CATÁLOGO OFICIAL</span>
+                    <h1 class="font-bold text-lg tracking-wider leading-none text-brand-text dark:text-darkbrand-text">
+                        NUVUS STORE</h1>
+                    <span
+                        class="text-[10px] tracking-widest text-brand-muted dark:text-darkbrand-muted uppercase font-semibold">CATÁLOGO
+                        OFICIAL</span>
                 </div>
             </div>
 
-            <!-- Navbar Badges & Actions -->
+            <!-- Acciones Header -->
             <div class="flex items-center gap-3">
-                <div class="hidden md:flex items-center gap-4 text-xs font-medium text-brand-muted dark:text-darkbrand-muted">
-                    <div class="flex items-center gap-1.5 bg-white/60 dark:bg-darkbrand-card px-3 py-1.5 rounded-full border border-brand-border/60 dark:border-darkbrand-border">
-                        <svg class="w-3.5 h-3.5 text-brand-text dark:text-darkbrand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <div
+                    class="hidden md:flex items-center gap-4 text-xs font-medium text-brand-muted dark:text-darkbrand-muted">
+                    <div
+                        class="flex items-center gap-1.5 bg-white/60 dark:bg-darkbrand-card px-3 py-1.5 rounded-full border border-brand-border/60 dark:border-darkbrand-border">
+                        <svg class="w-3.5 h-3.5 text-brand-text dark:text-darkbrand-text" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
                         <span>Córdoba, Argentina</span>
                     </div>
                 </div>
 
-                <!-- Botón Instagram Header -->
-                <a href="https://www.instagram.com/nuvus_store/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-2xl bg-white dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border text-brand-text dark:text-darkbrand-text hover:text-pink-600 dark:hover:text-pink-400 transition shadow-sm" title="Instagram de Nuvus Store">
+                <!-- Botón Instagram -->
+                <a href="https://www.instagram.com/nuvus_store/" target="_blank" rel="noopener noreferrer"
+                    class="p-2.5 rounded-2xl bg-white dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border text-brand-text dark:text-darkbrand-text hover:text-pink-600 dark:hover:text-pink-400 transition shadow-sm"
+                    title="Instagram de Nuvus Store">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                 </a>
 
                 <!-- Botón Modo Oscuro / Claro -->
-                <button onclick="toggleTheme()" class="p-2.5 rounded-2xl bg-white dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border text-brand-text dark:text-darkbrand-text hover:opacity-80 transition shadow-sm" title="Cambiar tema">
+                <button onclick="toggleTheme()"
+                    class="p-2.5 rounded-2xl bg-white dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border text-brand-text dark:text-darkbrand-text hover:opacity-80 transition shadow-sm"
+                    title="Cambiar tema">
                     <svg id="themeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
                     </svg>
                 </button>
             </div>
@@ -84,17 +109,22 @@
     </header>
 
     <!-- Banner Principal -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 w-full">
-        <div class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm transition-colors">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-3 w-full">
+        <div
+            class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm transition-colors">
             <div class="space-y-2 text-center md:text-left">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Stock Actualizado
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-brand-text dark:text-darkbrand-text">Encuentra tu próximo smartphone</h2>
-                <p class="text-brand-muted dark:text-darkbrand-muted text-sm max-w-xl">Equipos seleccionados y verificados con garantía de confianza. Consulta directa y personalizada por WhatsApp.</p>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-brand-text dark:text-darkbrand-text">
+                    Encuentra tu próximo smartphone</h2>
+                <p class="text-brand-muted dark:text-darkbrand-muted text-sm max-w-xl">Equipos seleccionados y
+                    verificados con garantía de confianza. Consulta directa y personalizada por WhatsApp.</p>
             </div>
-            
-            <div class="flex items-center gap-6 border-t md:border-t-0 md:border-l border-brand-border dark:border-darkbrand-border pt-4 md:pt-0 md:pl-8 w-full md:w-auto justify-center">
+
+            <div
+                class="flex items-center gap-6 border-t md:border-t-0 md:border-l border-brand-border dark:border-darkbrand-border pt-4 md:pt-0 md:pl-8 w-full md:w-auto justify-center">
                 <div class="text-center">
                     <div id="statTotal" class="text-2xl font-bold text-brand-text dark:text-darkbrand-text">0</div>
                     <div class="text-xs text-brand-muted dark:text-darkbrand-muted font-medium">Disponibles</div>
@@ -111,58 +141,108 @@
     <!-- Banner de Medios de Pago y Beneficios -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 w-full">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-            <div class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
+            <div
+                class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
                 <span>💵 Efectivo / Transferencia</span>
             </div>
-            <div class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
+            <div
+                class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
                 <span>🪙 USDT / Cripto Aceptado</span>
             </div>
-            <div class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
+            <div
+                class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
                 <span>🔄 Plan Canje Tu Usado</span>
             </div>
-            <div class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
+            <div
+                class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border p-3 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-brand-text dark:text-darkbrand-text shadow-sm">
                 <span>🛡️ Garantía Verificada</span>
             </div>
         </div>
     </section>
 
-    <!-- Buscador y Filtros -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full sticky top-20 z-30 bg-brand-bg/95 dark:bg-darkbrand-bg/95 backdrop-blur-sm">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-brand-card dark:bg-darkbrand-card p-3 rounded-2xl border border-brand-border dark:border-darkbrand-border shadow-sm transition-colors">
-            <div class="relative w-full sm:w-80">
-                <input type="text" id="searchInput" placeholder="Buscar por modelo, color o GB..." class="w-full bg-white dark:bg-darkbrand-bg text-brand-text dark:text-darkbrand-text placeholder-brand-muted/70 dark:placeholder-darkbrand-muted/70 text-sm pl-10 pr-4 py-2.5 rounded-xl border border-brand-border dark:border-darkbrand-border focus:outline-none focus:ring-2 focus:ring-brand-text/20 dark:focus:ring-darkbrand-text/20 transition">
-                <svg class="w-4 h-4 text-brand-muted dark:text-darkbrand-muted absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+    <!-- Buscador y Filtros (Navega con el scroll, SIN sticky para liberar pantalla en celus) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
+        <div
+            class="flex flex-col gap-3 bg-brand-card dark:bg-darkbrand-card p-3.5 rounded-2xl border border-brand-border dark:border-darkbrand-border shadow-sm transition-colors">
+            <!-- Buscador + Filtro Estado -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="relative w-full sm:w-80">
+                    <input type="text" id="searchInput" placeholder="Buscar por modelo, color o GB..."
+                        class="w-full bg-white dark:bg-darkbrand-bg text-brand-text dark:text-darkbrand-text placeholder-brand-muted/70 dark:placeholder-darkbrand-muted/70 text-sm pl-10 pr-4 py-2.5 rounded-xl border border-brand-border dark:border-darkbrand-border focus:outline-none focus:ring-2 focus:ring-brand-text/20 dark:focus:ring-darkbrand-text/20 transition">
+                    <svg class="w-4 h-4 text-brand-muted dark:text-darkbrand-muted absolute left-3.5 top-3.5"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+
+                <!-- Filtros por Estado -->
+                <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 no-scrollbar">
+                    <button onclick="setFilter('todos')" id="btn-filter-todos"
+                        class="filter-btn text-xs px-4 py-2 rounded-xl font-medium transition bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg shadow-sm">Todos</button>
+                    <button onclick="setFilter('nuevo')" id="btn-filter-nuevo"
+                        class="filter-btn text-xs px-4 py-2 rounded-xl font-medium transition bg-white dark:bg-darkbrand-bg text-brand-muted dark:text-darkbrand-muted hover:text-brand-text dark:hover:text-darkbrand-text border border-brand-border dark:border-darkbrand-border">Nuevos
+                        / Sello</button>
+                    <button onclick="setFilter('usado')" id="btn-filter-usado"
+                        class="filter-btn text-xs px-4 py-2 rounded-xl font-medium transition bg-white dark:bg-darkbrand-bg text-brand-muted dark:text-darkbrand-muted hover:text-brand-text dark:hover:text-darkbrand-text border border-brand-border dark:border-darkbrand-border">Usados
+                        Seleccionados</button>
+                </div>
             </div>
 
-            <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 no-scrollbar">
-                <button onclick="setFilter('todos')" id="btn-filter-todos" class="filter-btn text-xs px-4 py-2 rounded-xl font-medium transition bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg shadow-sm">Todos</button>
-                <button onclick="setFilter('nuevo')" id="btn-filter-nuevo" class="filter-btn text-xs px-4 py-2 rounded-xl font-medium transition bg-white dark:bg-darkbrand-bg text-brand-muted dark:text-darkbrand-muted hover:text-brand-text dark:hover:text-darkbrand-text border border-brand-border dark:border-darkbrand-border">Nuevos / Sello</button>
-                <button onclick="setFilter('usado')" id="btn-filter-usado" class="filter-btn text-xs px-4 py-2 rounded-xl font-medium transition bg-white dark:bg-darkbrand-bg text-brand-muted dark:text-darkbrand-muted hover:text-brand-text dark:hover:text-darkbrand-text border border-brand-border dark:border-darkbrand-border">Usados Seleccionados</button>
+            <!-- Filtros por Serie -->
+            <!-- Filtros por Serie Dinámicos -->
+            <div id="seriesContainer"
+                class="flex items-center gap-1.5 overflow-x-auto pt-1 border-t border-brand-border/40 dark:border-darkbrand-border/40 no-scrollbar">
+                <!-- Se generan solos desde Google Sheets -->
             </div>
         </div>
     </section>
 
     <!-- Grilla de Productos -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full flex-grow">
         <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
 
         <div id="emptyState" class="hidden text-center py-16 space-y-3">
             <h3 class="font-bold text-lg text-brand-text dark:text-darkbrand-text">No encontramos productos</h3>
-            <p class="text-brand-muted dark:text-darkbrand-muted text-sm max-w-sm mx-auto">Prueba ajustando el texto de búsqueda o quitando los filtros aplicados.</p>
+            <p class="text-brand-muted dark:text-darkbrand-muted text-sm max-w-sm mx-auto">Prueba ajustando el texto de
+                búsqueda o quitando los filtros aplicados.</p>
         </div>
     </main>
 
+    <!-- Modal de Vista Rápida -->
+    <div id="productModal"
+        class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div
+            class="bg-brand-card dark:bg-darkbrand-card border border-brand-border dark:border-darkbrand-border rounded-3xl max-w-md w-full overflow-hidden shadow-2xl transform transition-all p-6 space-y-5 relative">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 p-2 rounded-full bg-black/10 dark:bg-white/10 text-brand-text dark:text-white hover:opacity-80">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div id="modalContent" class="space-y-4"></div>
+        </div>
+    </div>
+
     <!-- Footer Completo de Marca -->
-    <footer class="bg-brand-card dark:bg-darkbrand-card border-t border-brand-border dark:border-darkbrand-border mt-16 pt-12 pb-8 transition-colors">
+    <footer
+        class="bg-brand-card dark:bg-darkbrand-card border-t border-brand-border dark:border-darkbrand-border mt-16 pt-12 pb-8 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-brand-border/60 dark:border-darkbrand-border/60">
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-brand-border/60 dark:border-darkbrand-border/60">
                 <div class="space-y-3">
                     <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg rounded-lg flex items-center justify-center font-bold text-lg">N</div>
-                        <span class="font-bold text-base tracking-wider text-brand-text dark:text-darkbrand-text">NUVUS STORE</span>
+                        <div
+                            class="w-8 h-8 bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg rounded-lg flex items-center justify-center font-bold text-lg">
+                            N</div>
+                        <span class="font-bold text-base tracking-wider text-brand-text dark:text-darkbrand-text">NUVUS
+                            STORE</span>
                     </div>
                     <p class="text-xs text-brand-muted dark:text-darkbrand-muted leading-relaxed">
-                        Especialistas en la compra, venta, permuta y servicio técnico de smartphones en Córdoba. Garantía en todos nuestros equipos.
+                        Especialistas en la compra, venta, permuta y servicio técnico de smartphones en Córdoba.
+                        Garantía en todos nuestros equipos.
                     </p>
                 </div>
 
@@ -175,19 +255,26 @@
 
                 <div class="space-y-3 text-xs">
                     <h4 class="font-bold text-sm text-brand-text dark:text-darkbrand-text mb-1">Contacto & Redes</h4>
-                    <p class="text-brand-muted dark:text-darkbrand-muted">¿Tienes dudas o quieres entregar tu usado como parte de pago?</p>
-                    
+                    <p class="text-brand-muted dark:text-darkbrand-muted">¿Tienes dudas o quieres entregar tu usado como
+                        parte de pago?</p>
+
                     <div class="flex flex-wrap gap-2 pt-1">
-                        <!-- Botón WhatsApp Footer -->
-                        <a id="footerWaBtn" href="#" target="_blank" class="inline-flex items-center gap-2 bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg px-4 py-2.5 rounded-xl font-semibold text-xs hover:opacity-90 transition shadow-sm">
+                        <!-- WhatsApp Footer -->
+                        <a id="footerWaBtn" href="#" target="_blank"
+                            class="inline-flex items-center gap-2 bg-brand-text dark:bg-darkbrand-text text-brand-bg dark:text-darkbrand-bg px-4 py-2.5 rounded-xl font-semibold text-xs hover:opacity-90 transition shadow-sm">
                             <span>WhatsApp</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
                         </a>
 
-                        <!-- Botón Instagram Footer -->
-                        <a href="https://www.instagram.com/nuvus_store/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 text-white px-4 py-2.5 rounded-xl font-semibold text-xs hover:opacity-90 transition shadow-sm">
+                        <!-- Instagram Footer -->
+                        <a href="https://www.instagram.com/nuvus_store/" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 text-white px-4 py-2.5 rounded-xl font-semibold text-xs hover:opacity-90 transition shadow-sm">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                             <span>@nuvus_store</span>
                         </a>
@@ -196,19 +283,24 @@
             </div>
 
             <!-- Footer Centrado -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-brand-muted dark:text-darkbrand-muted text-center">
+            <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-brand-muted dark:text-darkbrand-muted text-center">
                 <span>NUVUS STORE © 2026. Todos los derechos reservados.</span>
             </div>
         </div>
     </footer>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a id="floatingWaBtn" href="#" target="_blank" class="fixed bottom-5 right-5 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 flex items-center justify-center" title="Consultar por WhatsApp">
+    <a id="floatingWaBtn" href="#" target="_blank"
+        class="fixed bottom-5 right-5 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 flex items-center justify-center"
+        title="Consultar por WhatsApp">
         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
         </svg>
     </a>
 
     <script src="script.js"></script>
 </body>
+
 </html>
